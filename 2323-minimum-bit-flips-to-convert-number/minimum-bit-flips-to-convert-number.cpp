@@ -5,11 +5,11 @@ public:
         int cnt = 0; 
 
      
-        while (x != 0) {
-            x = x & (x - 1); 
-            cnt++;
+        for(int i=0; i<31; i++){
+            if(x & (1<<i)){
+                cnt++;
+            }
         }
-        
         return cnt; 
     }
 };
