@@ -6,11 +6,10 @@ private:
             return;
         }
 
-        unordered_set<int> used; // ⭐ per level
-
+        unordered_set<int> used; 
         for (int j = index; j < nums.size(); j++) {
 
-            // duplicate check (same level)
+            // duplicate check
             if (used.count(nums[j])) continue;
 
             used.insert(nums[j]);
