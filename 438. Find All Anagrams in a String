@@ -1,0 +1,38 @@
+class Solution {
+public:
+    vector<int> findAnagrams(string s, string p) {
+        map<char,int> mp;
+        for(char ch:p){
+            mp[ch]++;
+        }
+        vector<int> ans;
+        int i=0,j=0;
+        int k=p.size();
+        int unique=mp.size();
+        while(j<s.size()){
+            if(mp.find(s[j])!=mp.end()){
+                mp[s[j]]--;
+                if(mp[s[j]]==0){
+                    unique--;
+                }
+            }
+            if(j-i+1<k){
+                j++;
+            }
+            else if(j-i+1==k){
+                if(unique==0){
+                    ans.push_back(i);
+                }
+                if(mp.find(s[i])!=mp.end()){
+                    if(mp[s[i]]==0){
+                        unique++;
+                    }
+                    mp[s[i]]++;
+                }
+                i++;
+                j++;
+            }
+        }
+        return ans;
+    }
+};
